@@ -1,1 +1,22 @@
-
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dockerapp-deployment
+  labels:
+    app: dockerapp
+    type: back-end
+spec:
+  template:
+    metadata:
+      name: dockerapp-pod
+      labels:
+        app: dockerapp
+        type: back-end
+    spec:
+      containers:
+        - name: dockerapp
+          image: seinbear/dockerapp-repo
+  replicas: 3
+  selector:
+      matchLabels:
+        type: back-end
