@@ -1,3 +1,10 @@
 package ru.sberschool.hystrix
 
-data class SimpleResponse(val data: String)
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties
+import com.fasterxml.jackson.annotation.JsonProperty
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+data class Pokemon(
+    @JsonProperty("name")
+    val pokemonName: String
+)
